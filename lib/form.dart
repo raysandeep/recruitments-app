@@ -53,12 +53,26 @@ class _FormPageState extends State<FormPage> {
     print(myString);
     review=myController.text;
     String json = '{"reg": "$_val", "skills": "$_skillLevel", "capability": "$_capabilityLevel","depth":"$_depthLevel","tech":"$_technical","management":"$_management","design":"$_design","final_bool":"true","final_review":"$review","username":"$myString"}';
+    bool down = true;
+     if (down == true){
+      Fluttertoast.showToast(
+        msg: "Submitting!",
+        textColor: Colors.black,
+        timeInSecForIos: 1,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.white,
+  );
+     };    
 
     Response response = await post(url, headers: headers, body: json);
+    
     int statusCode = response.statusCode;
     String body = response.body;
     print(statusCode);
     print(body);
+
+    down = false;
+   
     if(statusCode == 201){
       _technical=false;
       _design = false;

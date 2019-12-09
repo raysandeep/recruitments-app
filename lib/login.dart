@@ -143,11 +143,18 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                         
                       ),
-                      SizedBox(height: 20.0),
-                      
+
+                      SizedBox(height: 100.0),
+                      Row(
+                        children: <Widget>[
+                          Container(
+                            width: 200,
+                            child: Image.asset("assets/gif/iot.gif",),),
+                            SizedBox(width: 150,)
+                        ],
+                      ),
                     ],
                   )),
-              SizedBox(height: 15.0),
             ],
           ),
         ));
@@ -157,12 +164,22 @@ void Toast(){
         String url = 'http://iothinc.herokuapp.com/token/';
         Map<String, String> headers = {"Content-type": "application/json"};
         String json = '{"username":"$_email", "password": "$_password"}';
+        bool down = true;
+        if (down == true){
+          Fluttertoast.showToast(
+            msg: "Logging In!",
+            textColor: Colors.black,
+            timeInSecForIos: 1,
+            gravity: ToastGravity.BOTTOM,
+            backgroundColor: Colors.white,
+      );
+        };   
         Response response = await post(url, headers: headers, body: json);
         int statusCode = response.statusCode;
         String body = response.body;
         print(statusCode);
         print(body.split('":"')[1].split("\"}")[0]);
-        
+        down = false;
         
          if (statusCode==200){
            final prefs = await SharedPreferences.getInstance();

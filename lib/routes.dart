@@ -35,7 +35,7 @@ class _RoutesPage extends State<Routes> {
     switch (_currentIndex) {
       case 0: return ListPage();
       case 1: return FormPage();
-      case 2:return ScanPage();
+      case 2:return ScanP();
         
         break;
       default: return FormPage();

@@ -34,7 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState(){
     super.initState();
     Future.delayed(Duration(
-      seconds: 5
+      seconds: 6
       ),()async{
         final prefs = await SharedPreferences.getInstance();
         final myString = prefs.getString('token') ?? '';
