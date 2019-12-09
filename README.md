@@ -1,4 +1,4 @@
-# codechef
+# IoThinC
 
 A new Flutter project.
 
